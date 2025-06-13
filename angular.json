@@ -29,7 +29,22 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles.less"],
+            "styles": [
+              "src/styles.less",
+              {
+                "input": "src/app/styles/default.less",
+                "bundleName": "default",
+                "inject": false
+              },
+              {
+                "input": "src/app/styles/dark.less",
+                "bundleName": "dark",
+                "inject": false
+              }
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/app/styles/themes"]
+            },
             "scripts": []
           },
           "configurations": {

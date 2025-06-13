@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedModule } from '@app/shared/shared.module';
 import { HomeService } from './home.service';
+import { ThemeService } from '@app/core/services/theme.service';
 @Component({
   selector: 'app-home',
   imports: [SharedModule],
@@ -8,7 +9,14 @@ import { HomeService } from './home.service';
   styleUrl: './home.component.less',
 })
 export class HomeComponent implements OnInit {
-  constructor(private hs: HomeService) {}
+  get currentTheme() {
+    return this.themeService.currentTheme === 'default' ? 'light' : 'dark';
+  }
+
+  constructor(
+    private hs: HomeService,
+    private themeService: ThemeService,
+  ) {}
 
   ngOnInit(): void {
     // this.fetchList();
@@ -18,5 +26,9 @@ export class HomeComponent implements OnInit {
     this.hs.fetchList().subscribe((data) => {
       console.log(data);
     });
+  }
+
+  onToggleTheme() {
+    this.themeService.toggleTheme();
   }
 }
