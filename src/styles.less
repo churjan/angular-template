@@ -1,11 +1,107 @@
-// Custom Theming for NG-ZORRO
-// For more information: https://ng.ant.design/docs/customize-theme/en
-@import "../node_modules/ng-zorro-antd/ng-zorro-antd.less";
-@import "./app/styles/css-reset.less";
-@import "./app/styles/common.less";
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
 
-// Override less variables to here
-// View all variables: https://github.com/NG-ZORRO/ng-zorro-antd/blob/master/components/style/themes/default.less
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-// @primary-color: #1890ff;
-/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
+// 遍历生成宽度样式
+.loopWidth(@counter, @step: 10) when (@counter >= @step) {
+  .w@{counter} {
+    width: @counter * 1px;
+  }
+  .loopWidth(@counter - @step, @step);
+}
+.loopWidth(500);
+
+// 遍历生成内外边距样式
+.loop(@counter) when (@counter > 0) {
+  .mt@{counter} {
+    margin-top: @counter * 1px;
+  }
+  .mr@{counter} {
+    margin-right: @counter * 1px;
+  }
+  .mb@{counter} {
+    margin-bottom: @counter * 1px;
+  }
+  .ml@{counter} {
+    margin-left: @counter * 1px;
+  }
+  .pt@{counter} {
+    padding-top: @counter * 1px;
+  }
+  .pr@{counter} {
+    padding-right: @counter * 1px;
+  }
+  .pb@{counter} {
+    padding-bottom: @counter * 1px;
+  }
+  .pl@{counter} {
+    padding-left: @counter * 1px;
+  }
+  .loop(@counter - 1);
+}
+.loop(50);

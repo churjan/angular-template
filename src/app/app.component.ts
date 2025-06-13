@@ -9,10 +9,12 @@ import { ThemeService } from './core/services/theme.service';
 })
 export class AppComponent implements OnInit {
   title = 'angular-template';
+  isReady = false;
 
   constructor(private themeService: ThemeService) {}
 
   async ngOnInit(): Promise<void> {
     await this.themeService.loadTheme();
+    this.isReady = true;
   }
 }
