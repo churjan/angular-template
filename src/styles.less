@@ -77,7 +77,7 @@ h6 {
 .loopWidth(500);
 
 // 遍历生成内外边距样式
-.loop(@counter) when (@counter > 0) {
+.loopSpace(@counter) when (@counter > 0) {
   .mt@{counter} {
     margin-top: @counter * 1px;
   }
@@ -102,6 +102,6 @@ h6 {
   .pl@{counter} {
     padding-left: @counter * 1px;
   }
-  .loop(@counter - 1);
+  .loopSpace(@counter - 1);
 }
-.loop(50);
+.loopSpace(50);
